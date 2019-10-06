@@ -1,0 +1,39 @@
+<a class="logout" ng-click="logout()">logout</a>
+<div class="commentBox">
+  <div class="post">
+    <div class="postBody">
+      <div class="postContent">
+        <div class="postHeader">
+          <h2 class="postAuthor" id="postAuthor">{{post.username | getTitleCase}}</h2>
+          <span class="publishDate">{{ post.posted | date : "HH:mm:ss dd MMM yyyy"}}</span>
+        </div>
+        <span class="postText">{{post.text}}</span>
+      </div>
+    </div>
+    <form class="createComment">
+      <label>Your Comment</label>
+      <textarea ng-model="comment.text" id="comment" type="text" placeholder="Comment" value="" required> </textarea>
+      <button type="submit" ng-click="addComment()">Post Comment</button>
+    </form>
+  </div>
+  <div>
+    <div class="comment" ng-repeat="comment in comments">
+      <div class="commentBody" ng-style="getStyle($index)">
+        <div class="commentHeader">
+          <h3 class="commentAuthor">{{comment.username | getTitleCase}}</h3>
+          <span class="publishDate">{{comment.posted | date : "HH:mm:ss dd MMM yyyy" }}</span>
+        </div>
+        <span class="commentContent">{{comment.text}}</span>
+        <div>
+          <a ng-if="comment.user_id == user.user_id" class="commentOption" ng-click="editComment($index, 'edit')">Edit</a>
+          <a class="commentOption left-margin" ng-click="editComment($index, 'reply')">Reply</a>
+        </div>
+        <form ng-show="comment.isEditing" class="createComment">
+          <textarea ng-model="comment.editText" id="edit-comment" type="text" placeholder="Comment" value="" required> </textarea>
+          <button type="submit" ng-click="submitEdit($index)">Post Comment</button>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

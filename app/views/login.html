@@ -1,0 +1,15 @@
+<div class="commentBox">
+  <div class="post">
+    <form class="createComment">
+      <label htmlFor="comment">Hello There!! Please enter your name.</label>
+      <p><label for="username">Username</label></p>
+      <input id="username"  ng-model="user.username" class="login-text" type="text" placeholder="Please enter username" value="" required />
+      <p><label for="password">Password</label></p>
+      <input id="password" ng-model="user.password" class="login-text" type="password" placeholder="Please enter password" value="" required />
+      <p><button type="submit" class="login-button" ng-click="login()">Login</button></p>
+      <div class="error-message">
+        <span class="error-text" ng-show="errorMessage">{{errorMessage}}</span>
+      </div>
+    </form>
+  </div>
+</div>
