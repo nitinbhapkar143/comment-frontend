@@ -15,6 +15,9 @@
       <textarea ng-model="comment.text" id="comment" type="text" placeholder="Comment" value="" required> </textarea>
       <button type="submit" ng-click="addComment()">Post Comment</button>
     </form>
+    <div class="error-message">
+      <span class="error-text" ng-show="errorMessage">{{errorMessage}}</span>
+    </div>
   </div>
   <div>
     <div class="comment" ng-repeat="comment in comments">
@@ -32,6 +35,9 @@
           <textarea ng-model="comment.editText" id="edit-comment" type="text" placeholder="Comment" value="" required> </textarea>
           <button type="submit" ng-click="submitEdit($index)">Post Comment</button>
         </form>
+        <div class="error-message">
+          <span class="error-text" ng-show="comment.errorMessage">{{comment.errorMessage}}</span>
+        </div>
       </div>
     </div>
 
